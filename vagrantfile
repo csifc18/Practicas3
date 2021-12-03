@@ -20,7 +20,7 @@ SCRIPT
 $manager_nfs = <<SCRIPT
 apt-get update
 apt-get install -y nfs-kernel-server
-mkdir /mnt/nfs
+mkdir -p /mnt/nfs
 chown nobody:nogroup /mnt/nfs
 echo "/mnt/nfs   10.100.199.201(rw,sync,no_root_squash,no_subtree_check)" >> /etc/exports
 echo "/mnt/nfs   10.100.199.202(rw,sync,no_root_squash,no_subtree_check)" >> /etc/exports
@@ -30,7 +30,7 @@ SCRIPT
 $worker_nfs = <<SCRIPT
 apt-get update
 apt-get install -y nfs-common
-mkdir /mnt/nfs
+mkdir -p /mnt/nfs
 echo "10.100.199.200:/mnt/nfs    /mnt/nfs   nfs auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0" >> /etc/fstab
 mount -a
 SCRIPT
